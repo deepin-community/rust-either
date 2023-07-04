@@ -1,15 +1,58 @@
-Source: template-repository
-Section: unknown
+Source: rust-either
+Section: rust
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: debhelper (>= 12),
+ dh-cargo (>= 25),
+ cargo:native <!nocheck>,
+ rustc:native <!nocheck>,
+ libstd-rust-dev <!nocheck>
+Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>
+Uploaders:
+ Ximin Luo <infinity0@debian.org>
+Standards-Version: 4.5.1
+Vcs-Git: https://salsa.debian.org/rust-team/debcargo-conf.git [src/either]
+Vcs-Browser: https://salsa.debian.org/rust-team/debcargo-conf/tree/master/src/either
+Rules-Requires-Root: no
 
-Package: template-repository
+# FIXME (packages."(name)".section) debcargo auto-generated summary for librust-either-dev is very long, consider overriding
+
+Package: librust-either-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends:
+ ${misc:Depends}
+Suggests:
+ librust-either+serde-dev (= ${binary:Version})
+Provides:
+ librust-either+default-dev (= ${binary:Version}),
+ librust-either+use-std-dev (= ${binary:Version}),
+ librust-either-1-dev (= ${binary:Version}),
+ librust-either-1+default-dev (= ${binary:Version}),
+ librust-either-1+use-std-dev (= ${binary:Version}),
+ librust-either-1.6-dev (= ${binary:Version}),
+ librust-either-1.6+default-dev (= ${binary:Version}),
+ librust-either-1.6+use-std-dev (= ${binary:Version}),
+ librust-either-1.6.1-dev (= ${binary:Version}),
+ librust-either-1.6.1+default-dev (= ${binary:Version}),
+ librust-either-1.6.1+use-std-dev (= ${binary:Version})
+Description: Enum `Either` with variants `Left` and `Right` is a general purpose sum type with two cases - Rust source code
+ This package contains the source for the Rust either crate, packaged by
+ debcargo for use with cargo and dh-cargo.
+
+# FIXME (packages."(name)".section) debcargo auto-generated summary for librust-either+serde-dev is very long, consider overriding
+
+Package: librust-either+serde-dev
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ librust-either-dev (= ${binary:Version}),
+ librust-serde-1+default-dev,
+ librust-serde-1+derive-dev
+Provides:
+ librust-either-1+serde-dev (= ${binary:Version}),
+ librust-either-1.6+serde-dev (= ${binary:Version}),
+ librust-either-1.6.1+serde-dev (= ${binary:Version})
+Description: Enum `Either` with variants `Left` and `Right` is a general purpose sum type with two cases - feature "serde"
+ This metapackage enables feature "serde" for the Rust either crate, by pulling
+ in any additional dependencies needed by that feature.

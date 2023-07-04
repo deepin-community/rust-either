@@ -1,0 +1,24 @@
+Test-Command: /usr/share/cargo/bin/cargo-auto-test either 1.6.1 --all-targets --all-features
+Features: test-name=rust-either:@
+Depends: dh-cargo (>= 18), librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test either 1.6.1 --all-targets 
+Features: test-name=librust-either-dev:default
+Depends: dh-cargo (>= 18), librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test either 1.6.1 --all-targets --no-default-features --features use_std
+Features: test-name=librust-either-dev:use_std
+Depends: dh-cargo (>= 18), librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test either 1.6.1 --all-targets --no-default-features
+Features: test-name=librust-either-dev:
+Depends: dh-cargo (>= 18), librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test either 1.6.1 --all-targets --no-default-features --features serde
+Features: test-name=librust-either+serde-dev:serde
+Depends: dh-cargo (>= 18), librust-serde-json-1+default-dev, @
+Restrictions: allow-stderr, skip-not-installable
